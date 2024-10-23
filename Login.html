@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validacion-User</title>
+    <title>Login</title>
     <style>
         body {
             background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
@@ -82,21 +82,28 @@
     </div>
 
     <script>
+        let alertShown = false; // Variable para asegurar que la alerta se muestre solo una vez
+
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Evita el envío del formulario
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             // Aquí puedes añadir la lógica para verificar el login
-            // Simulamos que la cuenta está registrada
-            const isRegistered = true; // Cambia esto según tu lógica de verificación
+            // Simulamos que la cuenta no está registrada
+            const isRegistered = false; // Cambia esto según tu lógica de verificación
 
-            if (isRegistered) {
-                // Redirige a Home.html si el usuario está registrado
-                window.location.href = 'Home.html';
-            } else {
-                alert('La cuenta no está registrada.'); // Mensaje de error si no está registrado
+            if (!isRegistered) {
+                // Mostrar alerta solo si no se ha mostrado antes
+                if (!alertShown) {
+                    alert("La cuenta no está registrada. Regístrate si no lo has hecho.");
+                    alertShown = true; // Marcar que la alerta ya fue mostrada
+                }
+                return; // No redirigir si no está registrado
             }
+
+            // Redirige a Home.html si el usuario está registrado
+            window.location.href = 'Home.html';
         });
     </script>
 </body>
