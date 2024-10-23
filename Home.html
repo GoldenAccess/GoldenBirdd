@@ -9,7 +9,8 @@
             background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
             font-family: 'Arial', sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
             margin: 0;
@@ -49,6 +50,39 @@
         a:hover {
             background-color: #FFC300; /* Cambiar color al pasar el ratón */
         }
+
+        /* Barra inferior con botones */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: transparent;
+        }
+
+        .bottom-nav a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .bottom-nav a.middle {
+            font-size: 24px;
+            background-color: transparent;
+            border: 2px solid #FFD700; /* Borde dorado alrededor del botón central */
+            border-radius: 50%;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +91,15 @@
         <h1>¡Hola!</h1>
         <p>Este será tu Home. ¡Bienvenido!</p>
         <a href="otra-pagina.html">Ir a otra página</a> <!-- Enlace a otra página -->
+    </div>
+
+    <!-- Barra inferior con botones -->
+    <div class="bottom-nav">
+        <a href="home.html">🏠</a>
+        <a href="wallet.html">💷</a>
+        <a href="star.html" class="middle">🌟</a>
+        <a href="shop.html">🛒</a>
+        <a href="profile.html">🙍‍♂️</a>
     </div>
 
 </body>
