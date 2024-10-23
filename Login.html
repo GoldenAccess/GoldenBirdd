@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validacion-User</title>
+    <title>Login</title>
     <style>
         body {
             background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
@@ -56,61 +56,50 @@
             background-color: #FFC300; /* Color al pasar el ratón */
         }
 
-        .register-link {
+        .login-link {
             margin-top: 15px;
             color: #007BFF; /* Color azul para el enlace */
             text-decoration: none;
         }
 
-        .register-link:hover {
+        .login-link:hover {
             text-decoration: underline; /* Subrayar el enlace al pasar el ratón */
         }
     </style>
-    <script>
-        let alertShown = false; // Variable para asegurar que la alerta se muestre solo una vez
-
-        function showLoginAlert() {
-            if (!alertShown) { // Solo mostrar la alerta si no se ha mostrado antes
-                alert("Esta Cuenta No Está Registrada. Regístrate si ya te has registrado. Dale Aceptar e ingresa nuevamente.");
-                alertShown = true; // Marcar que la alerta ya fue mostrada
-            }
-        }
-
-        function checkLogin(event) {
-            event.preventDefault(); // Evitar el envío del formulario
-            const email = document.querySelector('input[type="email"]').value;
-            const password = document.querySelector('input[type="password"]').value;
-
-            // Simulamos la verificación de registro
-            // Aquí podrías hacer una llamada a tu backend para verificar las credenciales
-            const registeredUsers = [
-                { email: 'usuario@example.com', password: '123456' } // Ejemplo de usuario registrado
-            ];
-            
-            const isRegistered = registeredUsers.some(user => user.email === email && user.password === password);
-
-            if (!isRegistered) {
-                showLoginAlert(); // Mostrar la alerta solo una vez
-            } else {
-                // Si está registrado, redirigir a la página de inicio
-            window.location.href = 'Home.html';// Cambia esto a la página de inicio
-            }
-        }
-    </script>
 </head>
 <body>
 
     <div class="form-container">
-        <h2>Iniciar Sesión</h2>
-        <form onsubmit="checkLogin(event)"> <!-- Usar JavaScript para manejar el envío -->
+        <h2>Login</h2> <!-- Cambiado de Registro a Login -->
+        <form id="registrationForm">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Email" required>
             <label for="password">Contraseña</label>
             <input type="password" id="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button>
+            <label for="confirm-password">Confirmar Contraseña</label>
+            <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
+            <label for="invitation-code">Código de Invitación</label>
+            <input type="text" id="invitation-code" placeholder="Código de Invitación" required>
+            <button type="submit">Iniciar Sesión</button> <!-- Cambiado de Registrar a Iniciar Sesión -->
         </form>
-        <a href="Autenticacion.html" class="register-link">Crear una cuenta</a>
+        <a href="Login.html" class="login-link">Crear una cuenta</a> <!-- Cambiado el texto del enlace -->
     </div>
 
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+            // Aquí puedes realizar validaciones o procesos adicionales
+            // Validación de contraseña
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden.'); // Mensaje de error
+                return; // Evita la redirección
+            }
+
+            // Redirige a Home.html
+            window.location.href = 'Home.html';
+        });
+    </script>
 </body>
 </html>
