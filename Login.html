@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Validacion-User</title>
     <style>
         body {
             background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
@@ -70,31 +70,33 @@
 <body>
 
     <div class="form-container">
-        <h2>Login</h2> <!-- Cambiado de Registro a Login -->
-        <form id="registrationForm">
+        <h2>Login</h2> <!-- Encabezado -->
+        <form id="loginForm"> <!-- Cambié el ID para reflejar el propósito -->
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Email" required>
             <label for="password">Contraseña</label>
             <input type="password" id="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button> <!-- Cambiado de Registrar a Iniciar Sesión -->
+            <button type="submit">Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
         </form>
-        <a href="Autenticacion.html" class="login-link">Crear una cuenta</a> <!-- Cambiado el texto del enlace -->
+        <a href="Autenticacion.html" class="login-link">Crear una cuenta</a> <!-- Enlace para crear cuenta -->
     </div>
 
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Evita el envío del formulario
-            // Aquí puedes realizar validaciones o procesos adicionales
-            // Validación de contraseña
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            if (password !== confirmPassword) {
-                alert('Las contraseñas no coinciden.'); // Mensaje de error
-                return; // Evita la redirección
-            }
 
-            // Redirige a Home.html
-            window.location.href = 'Home.html';
+            // Aquí puedes añadir la lógica para verificar el login
+            // Simulamos que la cuenta está registrada
+            const isRegistered = true; // Cambia esto según tu lógica de verificación
+
+            if (isRegistered) {
+                // Redirige a Home.html si el usuario está registrado
+                window.location.href = 'Home.html';
+            } else {
+                alert('La cuenta no está registrada.'); // Mensaje de error si no está registrado
+            }
         });
     </script>
 </body>
