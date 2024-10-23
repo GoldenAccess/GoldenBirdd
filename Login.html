@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Validacion-User</title>
     <style>
         body {
             background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
@@ -81,8 +81,13 @@
             const email = document.querySelector('input[type="email"]').value;
             const password = document.querySelector('input[type="password"]').value;
 
-            // Simulamos que la cuenta no está registrada
-            const isRegistered = false; // Cambia esto según tu lógica de verificación
+            // Simulamos la verificación de registro
+            // Aquí podrías hacer una llamada a tu backend para verificar las credenciales
+            const registeredUsers = [
+                { email: 'usuario@example.com', password: '123456' } // Ejemplo de usuario registrado
+            ];
+            
+            const isRegistered = registeredUsers.some(user => user.email === email && user.password === password);
 
             if (!isRegistered) {
                 showLoginAlert(); // Mostrar la alerta solo una vez
