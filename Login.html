@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <style>
+        body {
+            background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 400px; /* Ancho del formulario */
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333; /* Color del encabezado */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #FFD700; /* Color dorado para el botón */
+            color: #fff; /* Texto en blanco */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Botón ocupa todo el ancho */
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FFC300; /* Color al pasar el ratón */
+        }
+
+        .register-link {
+            margin-top: 15px;
+            color: #007BFF; /* Color azul para el enlace */
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            text-decoration: underline; /* Subrayar el enlace al pasar el ratón */
+        }
+    </style>
+    <script>
+        let alertShown = false; // Variable para asegurar que la alerta se muestre solo una vez
+
+        function showLoginAlert() {
+            if (!alertShown) { // Solo mostrar la alerta si no se ha mostrado antes
+                alert("Esta Cuenta No Está Registrada. Regístrate si ya te has registrado dale Aceptar e ingresa nuevamente.");
+                alertShown = true; // Marcar que la alerta ya fue mostrada
+            }
+        }
+
+        function checkLogin(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+
+            // Simulamos que la cuenta no está registrada
+            const isRegistered = false; // Cambia esto según tu lógica de verificación
+
+            if (!isRegistered) {
+                showLoginAlert(); // Mostrar la alerta solo una vez
+            } else {
+                // Si está registrado, redirigir a la página de inicio
+                window.location.href = 'Home.html'; // Cambia esto a la página de inicio
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Iniciar Sesión</h2>
+        <form onsubmit="checkLogin(event)"> <!-- Usar JavaScript para manejar el envío -->
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <a href="Autenticacion.html" class="register-link">Crear una cuenta</a>
+    </div>
+
+</body>
+</html>
