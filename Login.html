@@ -71,7 +71,7 @@
 
         function showLoginAlert() {
             if (!alertShown) { // Solo mostrar la alerta si no se ha mostrado antes
-                alert("Esta Cuenta No Está Registrada. Regístrate si ya te has registrado dale Aceptar e ingresa nuevamente.");
+                alert("Esta Cuenta No Está Registrada. Regístrate si ya te has registrado. Dale Aceptar e ingresa nuevamente.");
                 alertShown = true; // Marcar que la alerta ya fue mostrada
             }
         }
@@ -98,8 +98,10 @@
     <div class="form-container">
         <h2>Iniciar Sesión</h2>
         <form onsubmit="checkLogin(event)"> <!-- Usar JavaScript para manejar el envío -->
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Contraseña" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email" required>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="Contraseña" required>
             <button type="submit">Iniciar Sesión</button>
         </form>
         <a href="Autenticacion.html" class="register-link">Crear una cuenta</a>
