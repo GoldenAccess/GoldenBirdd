@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Cards</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FFC300,#FFD700);/* Fondo oscuro elegante */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .spacer {
+            height: 20px; /* Espaciador */
+        }
+
+        .vip-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Espacio entre tarjetas */
+            width:100%;
+            max-width: 280px; /* Ancho máximo reducido para hacer las tarjetas más pequeñas */
+            margin-bottom: 150px;
+            align-items: center; /* Centra las tarjetas horizontalmente */
+        }
+
+        /* Tarjetas más pequeñas y llamativas */
+        .vip-card {
+            background: linear-gradient(135deg, #FFD700,#003366); /* Color degradado llamativo */
+            border-radius: 20px; /* Bordes redondeados */
+            width: 100%; /* Tarjetas más pequeñas y centradas */
+            padding: 15px; /* Reducción del padding */
+            color: #F5F5F5; /* Texto en blanco humo */
+            text-align: center;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8); /* Sombra más pronunciada */
+            position: relative;
+            border: none;
+            transform: perspective(500px) rotateX(6deg) rotateY(-6deg); /* Efecto 3D */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .vip-card:hover {
+            transform: perspective(500px) rotateX(0deg) rotateY(0deg); /* Efecto de movimiento al pasar el mouse */
+        }
+
+        .vip-card h3 {
+            font-size: 16px; /* Fuente más pequeña */
+            color: #FFD700; /* Color dorado brillante */
+            margin: 5px 0;
+        }
+
+        .vip-card .icon {
+            font-size: 35px; /* Tamaño del icono reducido */
+            margin-bottom: 10px;
+        }
+
+        .vip-card .details {
+            font-size: 12px; /* Texto más pequeño */
+            color: #F5F5F5; /* Texto en blanco humo */
+            margin: 8px 0;
+        }
+
+        .vip-card .buy-btn {
+            background: linear-gradient(145deg, #ffd700, #ff8c00); /* Nuevo botón degradado */
+            color: #111;
+            font-size: 13px; /* Texto más pequeño */
+            border: none;
+            padding: 8px 15px; /* Reducción del padding */
+            border-radius: 30px; /* Botón con bordes redondeados */
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+            max-width: 160px; /* Botón más pequeño */
+            margin: 0 auto; /* Centrar el botón */
+        }
+
+        .vip-card .buy-btn:hover {
+            background: linear-gradient(145deg, #ffb700, #ff7c00); /* Efecto hover en el botón */
+        }
+
+        /* Banner más pequeño dentro de la tarjeta */
+        .banner {
+            background-color: #FFD700; /* Banner dorado */
+            color: black;
+            padding: 3px 8px; /* Banner más pequeño */
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 8px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Barra inferior con botones */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: transparent;
+        }
+
+        .bottom-nav a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .bottom-nav a.middle {
+            font-size: 24px;
+            background-color: transparent;
+            border: 2px solid #FFD700; /* Borde dorado alrededor del botón central */
+            border-radius: 50%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Espacio de 20px -->
+    <div class="spacer"></div>
+
+    <div class="vip-container">
+        <!-- VIP 1 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">👑</div>
+            <h3>VIP 1</h3>
+            <div class="details">
+                <p>Price: 10 USDT</p>
+                <p>Daily Earnings: 5.00 USDT</p>
+                <p>Interest: 50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 2 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">👑</div>
+            <h3>VIP 2</h3>
+            <div class="details">
+                <p>Price: 15 USDT</p>
+                <p>Daily Earnings: 7,5 USDT</p>
+                <p>Interest: 50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 3 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">👑</div>
+            <h3>VIP 3</h3>
+            <div class="details">
+                <p>Price: 20 USDT</p>
+                <p>Daily Earnings: 10.00 USDT</p>
+                <p>Interest: 50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 4 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">👑</div>
+            <h3>VIP 4</h3>
+            <div class="details">
+                <p>Price: 25 USDT</p>
+                <p>Daily Earnings: 12.50 USDT</p>
+                <p>Interest: 50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 5 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">👑</div>
+            <h3>VIP 5</h3>
+            <div class="details">
+                <p>Price: 30 USDT</p>
+                <p>Daily Earnings: 15.00 USDT</p>
+                <p>Interest: 50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 6 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">👑</div>
+            <h3>VIP 6</h3>
+            <div class="details">
+                <p>Price: 35 USDT</p>
+                <p>Daily Earnings: 17,50 USDT</p>
+                <p>Interest: 50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+    </div>
+
+    <!-- Barra de navegación inferior con botones -->
+    <div class="bottom-nav">
+        <a href="home.html">🏠</a>
+        <a href="wallet.html">💷</a>
+        <a href="star.html" class="middle">🌟</a>
+        <a href="shop.html">🛒</a>
+        <a href="profile.html">🙍‍♂️</a>
+    </div>
+
+</body>
+</html>
