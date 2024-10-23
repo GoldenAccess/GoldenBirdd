@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Validacion-User</title>
     <style>
         body {
             background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
@@ -99,11 +99,11 @@
                     alert("La cuenta no está registrada. Regístrate si no lo has hecho.");
                     alertShown = true; // Marcar que la alerta ya fue mostrada
                 }
-                return; // No redirigir si no está registrado
+                // Permitir que el usuario intente nuevamente iniciar sesión
+            } else {
+                // Redirige a Home.html si el usuario está registrado
+                window.location.href = 'Home.html';
             }
-
-            // Redirige a Home.html si el usuario está registrado
-            window.location.href = 'Home.html';
         });
     </script>
 </body>
