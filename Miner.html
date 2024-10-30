@@ -208,7 +208,7 @@
     </div>
 
     <button onclick="startMining()">
-     ⛏️ Iniciar Minado 
+        ⛏️ Iniciar Minado 
     </button>
 
     <div id="result" class="result"></div>
@@ -234,30 +234,56 @@
 </div>
 
 <script>
-    function startMining() {
-        const progressCircle = document.getElementById('progress-circle');
-        const progressPercentage = document.getElementById('progress-percentage');
-        const result = document.getElementById('result');
-        let progress = 0;
-        let initialInvestment = 10;  // Monto de inversión en USDT
-        let simulationTime = 24 * 1000; // Simulación rápida de 24 segundos
-        let intervalTime = simulationTime / 100;
+    const miningDuration = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+    const initialInvestment = 10; // Monto de inversión en USDT
+    const progressCircle = document.getElementById('progress-circle');
+    const progressPercentage = document.getElementById('progress-percentage');
+    const result = document.getElementById('result');
+
+    // Inicializa el estado de minado
+    function initializeMining() {
+        const startTime = localStorage.getItem('miningStartTime');
+        const endTime = localStorage.getItem('miningEndTime');
+        const currentTime = Date.now();
+
+        if (startTime && currentTime < endTime) {
+            startMining(currentTime - startTime, endTime - currentTime);
+        }
+    }
+
+    function startMining(previousTime = 0, remainingTime = miningDuration) {
+        if (localStorage.getItem('miningStartTime')) {
+            return; // Ya está en progreso
+        }
+
+        const startTime = Date.now();
+        const endTime = startTime + miningDuration;
+        localStorage.setItem('miningStartTime', startTime);
+        localStorage.setItem('miningEndTime', endTime);
 
         result.innerText = "Minado en progreso...";
-
+        
+        let progress = Math.min((previousTime + remainingTime) / miningDuration * 100, 100)
+            ;
+        const intervalTime = (miningDuration / 100); // Tiempo de intervalo para la animación de progreso
         const interval = setInterval(() => {
-            progress++;
-            progressPercentage.innerText = progress + '%';
-            progressCircle.style.background = `conic-gradient(#4caf50 ${progress}%, #ddd ${progress}%)`;
+            progress += 100 / (miningDuration / intervalTime);
+            progressPercentage.innerText = Math.min(progress, 100).toFixed(0) + '%';
+            progressCircle.style.background = `conic-gradient(#4caf50 ${Math.min(progress, 100)}%, #ddd ${Math.min(progress, 100)}%)`;
 
             if (progress >= 100) {
                 clearInterval(interval);
                 progressPercentage.innerText = '✔';
                 result.innerText = `Ganaste ${(initialInvestment / 2).toFixed(2)} USDT`;
                 result.style.color = '#4caf50';
+                localStorage.removeItem('miningStartTime');
+                localStorage.removeItem('miningEndTime');
             }
         }, intervalTime);
     }
+
+    // Llama a la función de inicialización al cargar la página
+    window.onload = initializeMining;
 </script>
 
 </body>
