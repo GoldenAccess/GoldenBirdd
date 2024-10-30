@@ -109,7 +109,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -121,6 +121,11 @@
 
         button:hover {
             background-color: #0056b3;
+            transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+        }
+
+        button:active {
+            transform: scale(0.95); /* Efecto de pulsar el botón */
         }
 
         .sparkles {
@@ -204,7 +209,7 @@
 
     <button onclick="startMining()">
         <img src="https://image.shutterstock.com/image-vector/footprint-icon-vector-illustration-260nw-1342271269.jpg" alt="Huella">
-        Iniciar Minado
+        Iniciar Minado ⛏️
     </button>
 
     <div id="result" class="result"></div>
