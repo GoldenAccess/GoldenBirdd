@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #333, #111); /* Fondo oscuro elegante */
+            background: linear-gradient(135deg, #1a1a1a, #333); /* Fondo degradado oscuro */
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -17,54 +17,89 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
+            overflow: hidden;
         }
+
         .container {
-            background-color: #222;
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             text-align: center;
             width: 350px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, transparent, #FFD700, transparent 50%);
+            animation: rotateBG 5s linear infinite;
+            opacity: 0.2;
+        }
+
+        .container::after {
+            animation-direction: reverse;
+        }
+
+        @keyframes rotateBG {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         h1 {
             font-size: 26px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
         }
+
         .info {
             font-size: 14px;
             color: #aaa;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+
         .progress-circle {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 6px solid #ddd;
-            border-top: 6px solid #4caf50;
-            animation: spin 2s linear infinite; /* Animación de giro */
+            background: conic-gradient(#4caf50 0%, #ddd 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 20px auto;
+            animation: pulse 1.5s infinite;
         }
-        .progress-circle.paused {
-            animation-play-state: paused; /* Pausa animación */
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
+
         .progress-percentage {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
+            font-size: 24px;
             color: #FFD700;
+            font-weight: bold;
+            text-shadow: 0 0 5px #FFD700;
         }
+
         .result {
             font-size: 18px;
             margin-top: 20px;
             font-weight: bold;
             color: #FFD700;
+            text-shadow: 0 0 5px #FFD700;
         }
+
         button {
-            padding: 10px;
+            padding: 12px;
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -76,50 +111,50 @@
             align-items: center;
             justify-content: center;
             transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
         button img {
             margin-right: 8px;
             width: 20px;
             height: 20px;
         }
+
         button:hover {
             background-color: #0056b3;
         }
-        .bottom-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            bottom: 10px;
+
+        .sparkles {
+            position: absolute;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            background-color: transparent;
-        }
-        .bottom-nav a {
-            color: #FFD700;
-            font-size: 24px;
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 60px;
-            height: 60px;
-        }
-        .bottom-nav a.middle {
-            font-size: 24px;
-            background-color: transparent;
-            border: 2px solid #FFD700;
-            border-radius: 50%;
-            padding: 5px;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
         }
 
-        /* Animación de giro */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: sparkle 1.5s infinite ease-in-out;
         }
+
+        @keyframes sparkle {
+            0% { opacity: 1; transform: scale(1) translate(0, 0); }
+            50% { opacity: 0.5; transform: scale(1.5) translate(10px, -10px); }
+            100% { opacity: 0; transform: scale(0) translate(-10px, 10px); }
+        }
+
+        /* Sparkles random positioning */
+        .sparkle:nth-child(1) { left: 10%; top: 30%; animation-delay: 0.3s; }
+        .sparkle:nth-child(2) { left: 70%; top: 50%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { left: 30%; top: 70%; animation-delay: 0.7s; }
+        .sparkle:nth-child(4) { left: 80%; top: 80%; animation-delay: 1s; }
+
     </style>
 </head>
 <body>
@@ -127,22 +162,25 @@
 <div class="container">
     <h1>Simulador de Minado de USDT</h1>
     <p class="info">Monto de inversión: 10 USDT. Duración de minería: 24 horas.</p>
-    <div class="progress-circle paused" id="progress-circle">
+    
+    <div class="progress-circle" id="progress-circle">
         <div class="progress-percentage" id="progress-percentage">0%</div>
     </div>
+
     <button onclick="startMining()">
         <img src="https://image.shutterstock.com/image-vector/footprint-icon-vector-illustration-260nw-1342271269.jpg" alt="Huella">
         Iniciar Minado
     </button>
-    <div id="result" class="result"></div>
-</div>
 
-<div class="bottom-nav">
-    <a href="home.html">🏠</a>
-    <a href="wallet.html">💷</a>
-    <a href="star.html" class="middle">🌟</a>
-    <a href="shop.html">🛒</a>
-    <a href="profile.html">🙍‍♂️</a>
+    <div id="result" class="result"></div>
+
+    <!-- Sparkles animation -->
+    <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+    </div>
 </div>
 
 <script>
@@ -156,18 +194,17 @@
         let intervalTime = simulationTime / 100;
 
         result.innerText = "Minado en progreso...";
-        progressCircle.classList.remove('paused'); // Iniciar animación de giro
 
         const interval = setInterval(() => {
             progress++;
             progressPercentage.innerText = progress + '%';
+            progressCircle.style.background = `conic-gradient(#4caf50 ${progress}%, #ddd ${progress}%)`;
 
             if (progress >= 100) {
                 clearInterval(interval);
-                progressCircle.classList.add('paused'); // Pausar animación de giro
                 progressPercentage.innerText = '✔';
                 result.innerText = `Ganaste ${(initialInvestment / 2).toFixed(2)} USDT`;
-                result.style.color = '#4caf50'; // Cambio de color al finalizar
+                result.style.color = '#4caf50';
             }
         }, intervalTime);
     }
