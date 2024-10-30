@@ -247,7 +247,8 @@
         const currentTime = Date.now();
 
         if (startTime && currentTime < endTime) {
-            startMining(currentTime - startTime, endTime - currentTime);
+            const elapsedTime = currentTime - startTime;
+            startMining(elapsedTime, endTime - currentTime);
         }
     }
 
@@ -262,10 +263,9 @@
         localStorage.setItem('miningEndTime', endTime);
 
         result.innerText = "Minado en progreso...";
-        
-        let progress = Math.min((previousTime + remainingTime) / miningDuration * 100, 100)
-            ;
-        const intervalTime = (miningDuration / 100); // Tiempo de intervalo para la animación de progreso
+        let progress = Math.min((previousTime + remainingTime) / miningDuration * 100, 100);
+        const intervalTime = 100; // Intervalo de actualización del progreso en milisegundos
+
         const interval = setInterval(() => {
             progress += 100 / (miningDuration / intervalTime);
             progressPercentage.innerText = Math.min(progress, 100).toFixed(0) + '%';
