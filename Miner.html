@@ -11,7 +11,7 @@
             color: #fff;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
@@ -26,9 +26,6 @@
             text-align: center;
             width: 350px;
         }
-        .spacer {
-            height: 20px;
-        }
         h1 {
             font-size: 26px;
             margin-bottom: 20px;
@@ -39,22 +36,26 @@
             color: #aaa;
             margin-bottom: 15px;
         }
-        .progress-bar {
-            width: 100%;
-            background-color: #444;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 20px;
+        .progress-circle {
             position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 6px solid #ddd;
+            border-top: 6px solid #4caf50;
+            animation: spin 2s linear infinite; /* Animación de giro */
+            margin: 20px auto;
         }
-        .progress-bar-inner {
-            height: 20px;
-            width: 0;
-            background: linear-gradient(90deg, #28a745, #4caf50);
-            text-align: center;
-            color: white;
-            line-height: 20px;
-            transition: width 0.1s ease;
+        .progress-circle.paused {
+            animation-play-state: paused; /* Pausa animación */
+        }
+        .progress-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #FFD700;
         }
         .result {
             font-size: 18px;
@@ -113,6 +114,12 @@
             border-radius: 50%;
             padding: 5px;
         }
+
+        /* Animación de giro */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -120,8 +127,8 @@
 <div class="container">
     <h1>Simulador de Minado de USDT</h1>
     <p class="info">Monto de inversión: 10 USDT. Duración de minería: 24 horas.</p>
-    <div class="progress-bar">
-        <div id="progress-bar-inner" class="progress-bar-inner">0%</div>
+    <div class="progress-circle paused" id="progress-circle">
+        <div class="progress-percentage" id="progress-percentage">0%</div>
     </div>
     <button onclick="startMining()">
         <img src="https://image.shutterstock.com/image-vector/footprint-icon-vector-illustration-260nw-1342271269.jpg" alt="Huella">
@@ -129,8 +136,6 @@
     </button>
     <div id="result" class="result"></div>
 </div>
-
-<div class="spacer"></div>
 
 <div class="bottom-nav">
     <a href="home.html">🏠</a>
@@ -142,26 +147,25 @@
 
 <script>
     function startMining() {
-        const progressBar = document.getElementById('progress-bar-inner');
+        const progressCircle = document.getElementById('progress-circle');
+        const progressPercentage = document.getElementById('progress-percentage');
         const result = document.getElementById('result');
         let progress = 0;
         let initialInvestment = 10;  // Monto de inversión en USDT
-        let miningDuration = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
-
-        // Para fines de prueba, se usará un tiempo menor, de 24 segundos
-        let simulationTime = 24 * 1000; // 24 segundos
+        let simulationTime = 24 * 1000; // Simulación rápida de 24 segundos
         let intervalTime = simulationTime / 100;
 
         result.innerText = "Minado en progreso...";
+        progressCircle.classList.remove('paused'); // Iniciar animación de giro
 
         const interval = setInterval(() => {
             progress++;
-            progressBar.style.width = progress + '%';
-            progressBar.innerText = progress + '%';
+            progressPercentage.innerText = progress + '%';
 
             if (progress >= 100) {
                 clearInterval(interval);
-                progressBar.innerText = 'Minado completado';
+                progressCircle.classList.add('paused'); // Pausar animación de giro
+                progressPercentage.innerText = '✔';
                 result.innerText = `Ganaste ${(initialInvestment / 2).toFixed(2)} USDT`;
                 result.style.color = '#4caf50'; // Cambio de color al finalizar
             }
