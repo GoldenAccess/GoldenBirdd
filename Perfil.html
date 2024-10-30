@@ -7,15 +7,16 @@
   <style>
     /* General styles */
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #1c1c1c;
-      color: #f1f1f1;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #FFC300, #FFD700);
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
@@ -27,6 +28,19 @@
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
       text-align: center;
       position: relative;
+    }
+
+    /* Banner */
+    .banner {
+      background-color: #FFD700;
+      color: black;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: bold;
+      border-radius: 8px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
     }
 
     /* Header */
@@ -102,33 +116,54 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: pointer;
+      text-decoration: none;
     }
 
-    /* Floating Buttons */
-    .floating-buttons {
-      position: fixed;
-      right: 15px;
-      bottom: 100px;
+    /* Spacer */
+    .spacer {
+      height: 150px;
+    }
+
+    /* Bottom navigation bar */
+    .bottom-nav {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      background-color: transparent;
     }
 
-    .floating-button {
-      width: 50px;
-      height: 50px;
-      background-color: #3a3a3a;
-      border-radius: 50%;
+    .bottom-nav a {
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
+      width: 60px;
+      height: 60px;
+    }
+
+    .bottom-nav a.middle {
       font-size: 24px;
-      color: #fff;
+      background-color: transparent;
+      border: 2px solid #FFD700;
+      border-radius: 50%;
+      padding: 5px;
     }
   </style>
 </head>
 <body>
+  <!-- Banner -->
+  <div class="banner">VIP1</div>
+
+  <!-- Container -->
   <div class="container">
     <!-- Header Section -->
     <div class="header">
@@ -153,19 +188,22 @@
 
     <!-- Buttons Section -->
     <div class="buttons">
-      <div class="button">💷<p>Recargar</p></div>
-      <div class="button">💰<p>Retirar</p></div>
-      <div class="button">🙍‍♂️<p>Cuenta</p></div>
-      <div class="button">🏠<p>Inicio</p></div>
-      <div class="button">📞<p>Contacto</p></div>
-      <div class="button">🔐<p>Contraseña</p></div>
+      <a href="recargar.html" class="button">💷<p>Recargar</p></a>
+      <a href="retirar.html" class="button">💰<p>Retirar</p></a>
+      <a href="cuenta.html" class="button">🙍‍♂️<p>Cuenta</p></a>
+      <a href="inicio.html" class="button">🏠<p>Inicio</p></a>
+      <a href="contacto.html" class="button">📞<p>Contacto</p></a>
+      <a href="contrasena.html" class="button">🔐<p>Contraseña</p></a>
     </div>
+    
+    <!-- Spacer -->
+    <div class="spacer"></div>
+  </div>
 
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-      <div class="floating-button">💬</div>
-      <div class="floating-button">📩</div>
-    </div>
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="chat.html" class="floating-button">💬</a>
+    <a href="mensaje.html" class="floating-button">📩</a>
   </div>
 </body>
 </html>
