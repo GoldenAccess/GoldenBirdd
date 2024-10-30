@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #FFC300, #FFD700); /* Fondo degradado */
+            background: linear-gradient(135deg, #333, #111); /* Fondo oscuro elegante */
+            color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -18,41 +19,48 @@
             box-sizing: border-box;
         }
         .container {
-            background-color: #fff;
+            background-color: #222;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             text-align: center;
-            width: 300px;
+            width: 350px;
         }
         .spacer {
-            height: 20px; /* Espaciador */
+            height: 20px;
         }
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 20px;
-            color: #333;
+            color: #FFD700;
+        }
+        .info {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 15px;
         }
         .progress-bar {
             width: 100%;
-            background-color: #ddd;
+            background-color: #444;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 20px;
+            position: relative;
         }
         .progress-bar-inner {
             height: 20px;
             width: 0;
-            background-color: #4caf50;
+            background: linear-gradient(90deg, #28a745, #4caf50);
             text-align: center;
             color: white;
             line-height: 20px;
+            transition: width 0.1s ease;
         }
         .result {
             font-size: 18px;
             margin-top: 20px;
             font-weight: bold;
-            color: #28a745;
+            color: #FFD700;
         }
         button {
             padding: 10px;
@@ -66,6 +74,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.3s ease;
         }
         button img {
             margin-right: 8px;
@@ -88,7 +97,7 @@
             background-color: transparent;
         }
         .bottom-nav a {
-            color: white;
+            color: #FFD700;
             font-size: 24px;
             text-decoration: none;
             display: flex;
@@ -100,7 +109,7 @@
         .bottom-nav a.middle {
             font-size: 24px;
             background-color: transparent;
-            border: 2px solid #FFD700; /* Borde dorado alrededor del botón central */
+            border: 2px solid #FFD700;
             border-radius: 50%;
             padding: 5px;
         }
@@ -110,6 +119,7 @@
 
 <div class="container">
     <h1>Simulador de Minado de USDT</h1>
+    <p class="info">Monto de inversión: 10 USDT. Duración de minería: 24 horas.</p>
     <div class="progress-bar">
         <div id="progress-bar-inner" class="progress-bar-inner">0%</div>
     </div>
@@ -153,6 +163,7 @@
                 clearInterval(interval);
                 progressBar.innerText = 'Minado completado';
                 result.innerText = `Ganaste ${(initialInvestment / 2).toFixed(2)} USDT`;
+                result.style.color = '#4caf50'; // Cambio de color al finalizar
             }
         }, intervalTime);
     }
