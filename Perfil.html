@@ -99,14 +99,15 @@
     /* Buttons Section */
     .buttons {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 20px;
+      justify-content: space-around;
+      position: fixed;
+      bottom: 80px; /* Positioned above the floating buttons */
+      width: 100%;
+      max-width: 400px;
     }
 
     .button {
-      width: 70px;
+      width: 60px;
       background-color: #3a3a3a;
       padding: 10px;
       text-align: center;
@@ -120,43 +121,33 @@
       text-decoration: none;
     }
 
-    /* Spacer */
-    .spacer {
-      height: 150px;
-    }
-
-    /* Bottom navigation bar */
-    .bottom-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* Floating buttons */
+    .floating-button {
       position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 400px;
-      background-color: transparent;
-    }
-
-    .bottom-nav a {
-      color: white;
+      right: 20px;
+      background-color: #FFD700;
+      color: black;
       font-size: 24px;
-      text-decoration: none;
+      width: 50px;
+      height: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 60px;
-      height: 60px;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
     }
 
-    .bottom-nav a.middle {
-      font-size: 24px;
-      background-color: transparent;
-      border: 2px solid #FFD700;
-      border-radius: 50%;
-      padding: 5px;
+    /* Position for each floating button */
+    .floating-button:first-child {
+      top: 50%;
+      transform: translateY(-100%);
     }
+
+    .floating-button:last-child {
+      top: calc(50% + 70px);
+    }
+
   </style>
 </head>
 <body>
@@ -195,15 +186,10 @@
       <a href="contacto.html" class="button">📞<p>Contacto</p></a>
       <a href="contrasena.html" class="button">🔐<p>Contraseña</p></a>
     </div>
-    
-    <!-- Spacer -->
-    <div class="spacer"></div>
   </div>
 
-  <!-- Bottom Navigation -->
-  <div class="bottom-nav">
-    <a href="chat.html" class="floating-button">💬</a>
-    <a href="mensaje.html" class="floating-button">📩</a>
-  </div>
+  <!-- Floating Buttons -->
+  <a href="chat.html" class="floating-button">💬</a>
+  <a href="mensaje.html" class="floating-button">📩</a>
 </body>
 </html>
