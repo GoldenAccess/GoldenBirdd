@@ -1,1 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <style>
+    /* General styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c;
+      color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #2a2a2a;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      margin: 0;
+      color: #ff4d4d;
+    }
+
+    /* Profile Section */
+    .profile {
+      background: linear-gradient(135deg, #ffb84d, #ff4d4d);
+      padding: 20px;
+      border-radius: 10px;
+      color: #2a2a2a;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile h2 {
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .profile .balance {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .balance div {
+      text-align: center;
+    }
+
+    .balance p {
+      margin: 5px 0;
+      color: #2a2a2a;
+    }
+
+    /* Buttons Section */
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .button {
+      width: 100px;
+      background-color: #3a3a3a;
+      padding: 15px 10px;
+      text-align: center;
+      border-radius: 10px;
+      color: #ccc;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button img {
+      width: 24px;
+      margin-bottom: 5px;
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      right: 15px;
+      bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-button {
+      width: 50px;
+      height: 50px;
+      background-color: #3a3a3a;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    /* Footer Navigation */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-around;
+      background-color: #2a2a2a;
+      padding: 10px 0;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-item {
+      text-align: center;
+      color: #ccc;
+    }
+
+    .nav-item img {
+      width: 24px;
+      margin-bottom: 5px;
+    }
+
+    .nav-item p {
+      font-size: 12px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <div class="header">
+      <h1>VOD USDT TRX</h1>
+      <img src="https://via.placeholder.com/40" alt="Logo">
+    </div>
+    
+    <!-- Profile Section -->
+    <div class="profile">
+      <h2>ID: 123456</h2>
+      <div class="balance">
+        <div>
+          <p>Balance total (USDT)</p>
+          <h3>3.00</h3>
+        </div>
+        <div>
+          <p>Monto de recarga (USDT)</p>
+          <h3>0.00</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+      <div class="button">
+        <img src="https://via.placeholder.com/24" alt="Recargar Icon">
+        <p>Recargar</p>
+      </div>
+      <div class="button">
+        <img src="https://via.placeholder.com/24" alt="Retirar Icon">
+        <p>Retirar</p>
+      </div>
+      <div class="button">
+        <img src="https://via.placeholder.com/24" alt="Cuenta Icon">
+        <p>Cuenta</p>
+      </div>
+      <div class="button">
+        <img src="https://via.placeholder.com/24" alt="Registros Icon">
+        <p>Registros financieros</p>
+      </div>
+      <div class="button">
+        <img src="https://via.placeholder.com/24" alt="Cambiar Contraseña Icon">
+        <p>Cambiar la contraseña</p>
+      </div>
+      <div class="button">
+        <img src="https://via.placeholder.com/24" alt="Desconectar Icon">
+        <p>Desconectar</p>
+      </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+      <div class="floating-button">
+        <img src="https://via.placeholder.com/24" alt="Soporte Icon">
+      </div>
+      <div class="floating-button">
+        <img src="https://via.placeholder.com/24" alt="Mensajes Icon">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="footer">
+    <div class="nav-item">
+      <img src="https://via.placeholder.com/24" alt="Hogar Icon">
+      <p>Hogar</p>
+    </div>
+    <div class="nav-item">
+      <img src="https://via.placeholder.com/24" alt="Tarea Icon">
+      <p>Tarea</p>
+    </div>
+    <div class="nav-item">
+      <img src="https://via.placeholder.com/24" alt="Equipo Icon">
+      <p>Equipo</p>
+    </div>
+    <div class="nav-item">
+      <img src="https://via.placeholder.com/24" alt="VIP Icon">
+      <p>VIP</p>
+    </div>
+    <div class="nav-item">
+      <img src="https://via.placeholder.com/24" alt="Perfil Icon">
+      <p>A mí</p>
+    </div>
+  </div>
+</body>
+        </html>
