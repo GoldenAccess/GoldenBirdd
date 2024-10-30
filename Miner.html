@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a, #333); /* Fondo degradado oscuro */
+            background: linear-gradient(135deg, #333, #111); /* Fondo oscuro elegante */
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -17,7 +17,6 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden;
         }
 
         .container {
@@ -99,7 +98,7 @@
         }
 
         button {
-            padding: 12px;
+            padding: 10px;
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -155,6 +154,42 @@
         .sparkle:nth-child(3) { left: 30%; top: 70%; animation-delay: 0.7s; }
         .sparkle:nth-child(4) { left: 80%; top: 80%; animation-delay: 1s; }
 
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: transparent;
+        }
+
+        .bottom-nav a {
+            color: #FFD700;
+            font-size: 24px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .bottom-nav a.middle {
+            font-size: 24px;
+            background-color: transparent;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        /* Espaciador */
+        .spacer {
+            height: 150px; /* Espaciador de 150 píxeles */
+        }
     </style>
 </head>
 <body>
@@ -181,6 +216,17 @@
         <div class="sparkle"></div>
         <div class="sparkle"></div>
     </div>
+</div>
+
+<!-- Espaciador -->
+<div class="spacer"></div>
+
+<div class="bottom-nav">
+    <a href="home.html">🏠</a>
+    <a href="wallet.html">💷</a>
+    <a href="star.html" class="middle">🌟</a>
+    <a href="shop.html">🛒</a>
+    <a href="profile.html">🙍‍♂️</a>
 </div>
 
 <script>
