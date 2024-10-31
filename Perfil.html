@@ -7,18 +7,18 @@
   <style>
     /* General styles */
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #FFC300, #FFD700);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
+    body {
+            background: linear-gradient(75deg, #FFC300, #FFD700); /* Fondo degradado */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
     }
-
     .container {
       width: 100%;
       max-width: 400px;
@@ -106,54 +106,7 @@
       max-width: 400px;
     }
 
-    .button {
-      width: 60px;
-      background-color: #3a3a3a;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-      color: #ccc;
-      font-size: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    /* Bottom Navigation */
-    .bottom-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 400px;
-      background-color: transparent;
-    }
-
-    .bottom-nav a {
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 60px;
-      height: 60px;
-    }
-
-    .bottom-nav a.middle {
-      font-size: 24px;
-      background-color: transparent;
-      border: 2px solid #FFD700; /* Borde dorado alrededor del botón central */
-      border-radius: 50%;
-      padding: 5px;
-    }
-
+  
     /* Floating buttons */
     .floating-button {
       position: fixed;
@@ -180,7 +133,39 @@
     .floating-button:last-child {
       top: calc(50% + 70px);
     }
+.bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: transparent;
+        }
 
+        .bottom-nav a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: transparent; /* Fondo transparente */
+        }
+
+        .bottom-nav a.middle {
+            font-size: 24px;
+            background-color: transparent;
+            border: 2px solid #FFD700; /* Borde dorado alrededor del botón central */
+            border-radius: 50%;
+            padding: 5px;
+        }
+      
   </style>
 </head>
 <body>
