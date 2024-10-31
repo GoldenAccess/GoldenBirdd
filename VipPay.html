@@ -1,237 +1,176 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil</title>
-  <style>
-    /* General styles */
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #FFC300, #FFD700);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Cards</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #006400, #111); /* Green and dark black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    .container {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-      background-color: #2a2a2a;
-      border-radius: 12px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-      text-align: center;
-      position: relative;
-    }
+        .vip-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 350px; /* Smaller width for cards */
+        }
 
-    /* Banner */
-    .banner {
-      background-color: #FFD700; /* Banner dorado */
-      color: black;
-      padding: 3px 8px; /* Banner más pequeño */
-      font-size: 10px;
-      font-weight: bold;
-      border-radius: 8px;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
+        .vip-card {
+            background: linear-gradient(145deg, #111, #222);
+            border-radius: 12px; /* Smaller border radius */
+            width: 100%; /* Full width of the container */
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+            position: relative;
+            border: 1px solid #444;
+        }
 
-    /* Header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-    }
+        .vip-card h3 {
+            font-size: 18px; /* Smaller font size */
+            color: gold;
+            margin: 5px 0;
+        }
 
-    .header img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
+        .vip-card .icon {
+            font-size: 28px; /* Smaller icon size */
+            margin-bottom: 10px;
+        }
 
-    .header h1 {
-      font-size: 18px;
-      margin: 0;
-      color: #ff4d4d;
-    }
+        .vip-card .details {
+            font-size: 14px; /* Smaller text */
+            color: #ccc;
+            margin: 8px 0;
+        }
 
-    /* Profile Section */
-    .profile {
-      background: linear-gradient(135deg, #ffb84d, #ff4d4d);
-      padding: 20px;
-      border-radius: 10px;
-      color: #2a2a2a;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        .vip-card .details p {
+            margin: 5px 0;
+        }
 
-    .profile h2 {
-      font-size: 16px;
-      color: #fff;
-    }
+        .vip-card .buy-btn {
+            background: linear-gradient(145deg, #ffdd00, #cfa800);
+            color: #111;
+            font-size: 14px; /* Button text size */
+            border: none;
+            padding: 8px 15px; /* Reduced padding */
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%; /* Full width for button */
+        }
 
-    .profile .balance {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      margin-top: 10px;
-    }
+        .vip-card .buy-btn:hover {
+            background: linear-gradient(145deg, #e9b700, #b98a00);
+        }
 
-    .balance div {
-      text-align: center;
-    }
+        /* Gold "Desbloquear" Banner inside card */
+        .banner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: gold;
+            color: black;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
 
-    .balance p {
-      margin: 5px 0;
-      color: #2a2a2a;
-    }
-
-    /* Buttons Section */
-    .buttons {
-      display: flex;
-      justify-content: space-around;
-      position: fixed;
-      bottom: 160px; /* Adjusted for bottom-nav */
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .button {
-      width: 60px;
-      background-color: #3a3a3a;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-      color: #ccc;
-      font-size: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    /* Bottom Navigation */
-    .bottom-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 400px;
-      background-color: transparent;
-    }
-
-    .bottom-nav a {
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 60px;
-      height: 60px;
-    }
-
-    .bottom-nav a.middle {
-      font-size: 24px;
-      background-color: transparent;
-      border: 2px solid #FFD700; /* Borde dorado alrededor del botón central */
-      border-radius: 50%;
-      padding: 5px;
-    }
-
-    /* Floating buttons */
-    .floating-button {
-      position: fixed;
-      right: 20px;
-      background-color: #FFD700;
-      color: black;
-      font-size: 24px;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      text-decoration: none;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Position for each floating button */
-    .floating-button:first-child {
-      top: 50%;
-      transform: translateY(-100%);
-    }
-
-    .floating-button:last-child {
-      top: calc(50% + 70px);
-    }
-
-  </style>
+    </style>
 </head>
 <body>
-  <!-- Banner -->
-  <div class="banner">VIP1</div>
 
-  <!-- Container -->
-  <div class="container">
-    <!-- Header Section -->
-    <div class="header">
-      <h1>VOD USDT TRX</h1>
-      <img src="https://via.placeholder.com/40" alt="Logo">
-    </div>
-    
-    <!-- Profile Section -->
-    <div class="profile">
-      <h2>ID: 123456</h2>
-      <div class="balance">
-        <div>
-          <p>Balance total (USDT)</p>
-          <h3>3.00</h3>
+    <div class="vip-container">
+        <!-- VIP 1 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">🎁</div>
+            <h3>VIP 1</h3>
+            <div class="details">
+                <p>Price: 10 USDT</p>
+                <p>Daily Earnings: 1.50 USDT</p>
+                <p>Interest: 1.50%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
         </div>
-        <div>
-          <p>Monto de recarga (USDT)</p>
-          <h3>0.00</h3>
+
+        <!-- VIP 2 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">🎁</div>
+            <h3>VIP 2</h3>
+            <div class="details">
+                <p>Price: 15 USDT</p>
+                <p>Daily Earnings: 8.00 USDT</p>
+                <p>Interest: 8.00%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
         </div>
-      </div>
+
+        <!-- VIP 3 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">🎁</div>
+            <h3>VIP 3</h3>
+            <div class="details">
+                <p>Price: 20 USDT</p>
+                <p>Daily Earnings: 25.00 USDT</p>
+                <p>Interest: 36.00%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 4 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">🎁</div>
+            <h3>VIP 4</h3>
+            <div class="details">
+                <p>Price: 25 USDT</p>
+                <p>Daily Earnings: 30.00 USDT</p>
+                <p>Interest: 40.00%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 5 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">🎁</div>
+            <h3>VIP 5</h3>
+            <div class="details">
+                <p>Price: 30 USDT</p>
+                <p>Daily Earnings: 40.00 USDT</p>
+                <p>Interest: 50.00%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
+
+        <!-- VIP 6 Card -->
+        <div class="vip-card">
+            <div class="banner">Desbloquear</div>
+            <div class="icon">🎁</div>
+            <h3>VIP 6</h3>
+            <div class="details">
+                <p>Price: 35 USDT</p>
+                <p>Daily Earnings: 50.00 USDT</p>
+                <p>Interest: 60.00%</p>
+            </div>
+            <button class="buy-btn" onclick="location.href='purchase_page.html'">Buy</button>
+        </div>
     </div>
 
-    <!-- Buttons Section -->
-    <div class="buttons">
-      <a href="recargar.html" class="button">💷<p>Recargar</p></a>
-      <a href="retirar.html" class="button">💰<p>Retirar</p></a>
-      <a href="cuenta.html" class="button">🙍‍♂️<p>Cuenta</p></a>
-      <a href="inicio.html" class="button">🏠<p>Inicio</p></a>
-      <a href="contacto.html" class="button">📞<p>Contacto</p></a>
-      <a href="contrasena.html" class="button">🔐<p>Contraseña</p></a>
-    </div>
-  </div>
-
-  <!-- Bottom Navigation -->
-  <div class="bottom-nav">
-    <a href="opcion1.html">🔧</a>
-    <a href="opcion2.html">📊</a>
-    <a href="opcion3.html" class="middle">⭐</a>
-    <a href="opcion4.html">⚙️</a>
-    <a href="opcion5.html">📅</a>
-  </div>
-
-  <!-- Floating Buttons -->
-  <a href="chat.html" class="floating-button">💬</a>
-  <a href="mensaje.html" class="floating-button">📩</a>
 </body>
 </html>
